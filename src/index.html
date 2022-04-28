@@ -1,0 +1,211 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>RemovePutinBounty</title>
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+  <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+  <main class="container-fluid">
+    <!-- <header>
+      <h1 class="text-center">E2E Test Dapp</h1>
+    </header> -->
+
+    <!-- Part 1 Setting up Basic Actions and Status-->
+    <section>
+      <!-- <h3 class="card-title">Status</h3> -->
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <p class="info-text alert alert-primary">Total Contributed: <span id="bounty"></span></p>
+          <p class="info-text alert alert-primary">Total Contributed: <span id="bounty-usd"></span></p>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <p class="info-text alert alert-secondary">DApp Status: <span id="contractStatus"></span></p>
+
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Basic Actions</h4>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="getAccounts">eth_accounts</button>
+              <p class="info-text alert alert-secondary">eth_accounts result: <span id="getAccountsResult"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- /Part 1 -->
+
+    <section>
+      <!-- Part 2 Contract-->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <h4 class="card-title">Predict Putin's Removal:</h4>
+              <p class="info-text alert alert-success">
+                Pick a Date: 
+                <span id="datePicked"><input type="text" class="info-text full-width mb-3" id="calendar" data-date="04/25/2022"></input></span>
+                Pick a Time:
+                <span id="timePicked"><input type="text" class="info-text full-width mb-3" id="timepicker"></input></span>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="createToken">Create Your Predict</button>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="downloadReceipt" disabled>Download Receipt</button>
+                Contribution in ETH:
+                <span id="valuePicked"><input type="text" placeholder="Choose your contribution" class="info-text full-width mb-3" id="msg.value"></input></span>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="sendToBlockchain" disabled>Send Predict</button>
+              </p>
+              
+              <h4 class="card-or">Or Only Contribute:</h4>
+              <p class="info-text alert alert-success">
+              <input type="text" placeholder="Choose your contribution" class="info-text full-width mb-3" id="donationValue"></input>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="deployUsingInput">Send Contribution</button>
+              </p>
+
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="col-xl-9 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <table id ="predicts" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Prediction</th>
+                    <th scope="col">See on Etherscan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>    
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>    
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
+                    <td>24/07/2022 at 17:33 UTC</td>
+                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
+                  </tr>    
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="./metamask-onboarding.bundle.js"></script>
+  <script type="module" src="bundle.js" defer></script>
+</body>
+
+</html>
