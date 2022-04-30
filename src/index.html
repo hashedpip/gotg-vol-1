@@ -9,7 +9,8 @@
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   <link rel="stylesheet" href="index.css" type="text/css">
 </head>
 
@@ -64,10 +65,8 @@
               <p class="info-text alert alert-success">
                 Pick a Date: 
                 <span id="datePicked"><input type="text" class="info-text full-width mb-3" id="calendar" data-date="04/25/2022"></input></span>
-                Pick a Time:
-                <span id="timePicked"><input type="text" class="info-text full-width mb-3" id="timepicker"></input></span>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="createToken">Create Your Predict</button>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="downloadReceipt" disabled>Download Receipt</button>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="createPredict">Create a Predict</button>
+                <button class="btn btn-primary download-link btn-lg btn-block mb-3" id="downloadReceipt" disabled>Download Receipt</button>
                 Contribution in ETH:
                 <span id="valuePicked"><input type="text" placeholder="Choose your contribution" class="info-text full-width mb-3" id="msg.value"></input></span>
                 <button class="btn btn-primary btn-lg btn-block mb-3" id="sendToBlockchain" disabled>Send Predict</button>
@@ -76,7 +75,7 @@
               <h4 class="card-or">Or Only Contribute:</h4>
               <p class="info-text alert alert-success">
               <input type="text" placeholder="Choose your contribution" class="info-text full-width mb-3" id="donationValue"></input>
-              <button class="btn btn-primary btn-lg btn-block mb-3" id="deployUsingInput">Send Contribution</button>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="donationSend">Send Contribution</button>
               </p>
 
             </div>
@@ -90,7 +89,6 @@
               <table id ="predicts" class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Address</th>
                     <th scope="col">Contribution</th>
                     <th scope="col">See on Etherscan</th>
@@ -98,101 +96,6 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>    
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>    
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>0xAf5fc45258B5d0aF72031AB154BF6DFcFeC74b99</td>
-                    <td>0.01 ETH for 100 PBTY</td>
-                    <td><a href="https://etherscan.io/tx/0x62124abe2be151544dce4a2a1352036dfd26794b00bddb1fc8040e7893190164" target="_blank">Go To Etherscan</a></td>
-                  </tr>    
                 </tbody>
               </table>
             </div>
@@ -200,9 +103,58 @@
         </div>
       </div>
     </section>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Something is Wrong</h5>
+          </div>
+          <div class="modal-body">
+            Your prediction should be at least 12 hours from now!
+          </div>
+          <div class="modal-footer">
+            <button id="closeModal" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Receipt Downloaded</h5>
+          </div>
+          <div class="modal-body">
+            Keep your receipt somewhere safe!<br>
+            Please note your Predict is valid only when confirmed on the Blockchain!
+          </div>
+          <div class="modal-footer">
+            <button id="closeModal_2" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="predictSucessful" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Success!</h5>
+          </div>
+          <div class="modal-body">
+            Your Predict has been confirmed on the Blockchain!
+          </div>
+          <div class="modal-footer">
+            <button id="closeSucessNote" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <script src="./metamask-onboarding.bundle.js"></script>
   <script type="module" src="bundle.js" defer></script>
