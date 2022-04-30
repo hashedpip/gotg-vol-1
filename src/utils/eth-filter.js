@@ -33,7 +33,8 @@ async function listEvents (_filter) {
   }
 }
 
-web3 = new Web3(window.web3.currentProvider)
+//const { ethereum } = window
+window.web3 = new Web3(window.ethereum)
 
 async function writeData () {
   const data = await listEvents(eventFilter)
@@ -44,7 +45,7 @@ async function writeData () {
   for (let i = 0; i < Object.keys(data).length; i++) {
     formatedData.data.push([
       `${data[i].args.to}`,
-      `${web3.utils.fromWei(`${data[i].args.value}`, 'ether')} ETH for ${web3.utils.fromWei(`${data[i].args.value}`, 'ether') * 10000} PBTY`,
+      `${window.web3.utils.fromWei(`${data[i].args.value}`, 'ether')} ETH for ${window.web3.utils.fromWei(`${data[i].args.value}`, 'ether') * 10000} PBTY`,
       // `<a href="https://goerli.etherscan.io/tx/${data[i].transactionHash}" target="_blank">Go To Etherscan</a>`
       `<a href="https://etherscan.io/tx/${data[i].transactionHash}" target="_blank">Go To Etherscan</a>`
     ])

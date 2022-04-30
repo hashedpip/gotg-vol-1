@@ -156,6 +156,7 @@ const initialize = () => {
           window.location.reload()
         } else {
           onboardButtonUpdate(accounts)
+          window.location.reload()
         }
       })
 
@@ -163,7 +164,7 @@ const initialize = () => {
 
       try {
         let status
-        const contract = new web3.eth.Contract(contractABI, contractAddress)
+        const contract = new window.web3.eth.Contract(contractABI, contractAddress)
         // Check ETH balance on the contract (AKA total contribution)
         const balance = await window.web3.eth.getBalance(contractAddress)
         // Check contract state: 0 || 1 || 2
@@ -194,7 +195,8 @@ const initialize = () => {
   MetaMaskClientCheck()
 
   web3 = new Web3(window.web3.currentProvider)
-  const contract = new web3.eth.Contract(contractABI, contractAddress)
+
+  window.contract = new web3.eth.Contract(contractABI, contractAddress)
 
   // ------------- ⬇⬇ GENERATING PREDICTS ⬇⬇ -------------
 
