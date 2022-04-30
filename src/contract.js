@@ -236,7 +236,7 @@ const initialize = () => {
   sendPredict.onclick = async () => {
     const accounts = await ethereum.request({ method: 'eth_accounts' })
     const commitment = await contract.methods.getCommitment(data.date, data.salt).call()
-    if(web3.utils.fromWei(predictMsgValue.value, 'ether') < 0.0001) {alert("Invalid Input Detected! ETH Contribution is too low!");return;}
+    if(predictMsgValue.value < 0.0001) {alert("Invalid Input Detected! ETH Contribution is too low!");return;}
     await contract.methods.predictRemoval(commitment)
       .send({
         from: accounts[0],
